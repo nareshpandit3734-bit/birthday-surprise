@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    background:#09080d;
+    color:white;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+/* MAIN */
+
+.page{
+    position:relative;
+    width:100%;
+    max-width:600px;
+    margin:0 auto;
+    padding:30px 15px 60px;
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+    width:100%;
+    min-height:500px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:60px 10px;
+}
+
+.hero small{
+    color:#aaa;
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    margin:0;
+
+    font-size:48px;
+    line-height:1.05;
+
+    color:white;
+
+    font-weight:900;
+}
+
+.hero p{
+    max-width:380px;
+
+    margin:20px auto 0;
+
+    color:#aaa6b0;
+
+    font-size:15px;
+
+    line-height:1.7;
+}
+
+/* CARD */
+
+.card{
+    position:relative;
+
+    width:100%;
+
+    margin:20px 0;
+
+    padding:20px;
+
+    background:#121017;
+
+    border:1px solid #28232e;
+
+    border-radius:22px;
+}
+
+/* PHOTO */
+
+.photo{
+    width:100%;
+
+    background:#000;
+
+    padding:8px;
+
+    border-radius:18px;
+}
+
+.photo img{
+    display:block;
+
+    width:100%;
+    height:auto;
+
+    max-height:750px;
+
+    object-fit:contain;
+
+    border-radius:12px;
+}
+
+/* TITLES */
+
+.label{
+    color:#9d95a7;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:10px;
+}
+
+h2{
+    margin:0 0 15px;
+
+    font-size:25px;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:7px;
+}
+
+.time{
+    background:#09080d;
+
+    border:1px solid #29242e;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    padding:13px 3px;
+}
+
+.number{
+    font-size:22px;
+
+    font-weight:bold;
+}
+
+.unit{
+    margin-top:4px;
+
+    color:#77717e;
+
+    font-size:8px;
+
+    text-transform:uppercase;
+}
+
+/* DATE */
+
+.date{
+    display:flex;
+
+    gap:7px;
+
+    margin-top:15px;
+}
+
+.date input{
+    width:100%;
+
+    min-width:0;
+
+    padding:11px;
+
+    background:#09080d;
+
+    color:white;
+
+    border:1px solid #302b36;
+
+    border-radius:10px;
+}
+
+.date button{
+    border:0;
+
+    padding:0 15px;
+
+    border-radius:10px;
+
+    background:white;
+
+    color:black;
+
+    font-weight:bold;
+}
+
+/* MESSAGE */
+
+.message{
+    color:#d2cdd7;
+
+    font-size:15px;
+
+    line-height:1.9;
+}
+
+.message p{
+    margin:0 0 18px;
+}
+
+.message strong{
+    color:white;
+}
+
+/* SCRATCH */
+
+#scratch{
+    width:100%;
+
+    height:auto;
+
+    display:block;
+
+    margin-top:15px;
+
+    border-radius:15px;
+
+    touch-action:none;
+}
+
+.scratch-text{
+    text-align:center;
+
+    color:white;
+
+    font-weight:bold;
+
+    line-height:1.7;
+
+    margin-top:10px;
+}
+
+/* GIFT */
+
+.gift-area{
+    text-align:center;
+}
+
+.gift{
+    width:150px;
+
+    height:130px;
+
+    position:relative;
+
+    margin:30px auto;
+
+    cursor:pointer;
+}
+
+.gift-box{
+    position:absolute;
+
+    bottom:0;
+
+    left:10px;
+
+    width:130px;
+
+    height:85px;
+
+    background:#7136d4;
+
+    border-radius:8px 8px 15px 15px;
+}
+
+.gift-lid{
+    position:absolute;
+
+    top:25px;
+
+    left:0;
+
+    width:150px;
+
+    height:30px;
+
+    background:#a77bea;
+
+    border-radius:7px;
+
+    z-index:3;
+}
+
+.gift-ribbon{
+    position:absolute;
+
+    top:0;
+
+    left:61px;
+
+    width:28px;
+
+    height:115px;
+
+    background:#f4d0ff;
+
+    z-index:4;
+}
+
+.gift.open .gift-lid{
+    animation:open .7s forwards;
+}
+
+@keyframes open{
+
+    to{
+        transform:translateY(-45px) rotate(-5deg);
+    }
+
+}
+
+.gift-message{
+    display:none;
+
+    color:#ddd7e3;
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+.gift-message.show{
+    display:block;
+}
+
+/* END */
+
+.end{
+    text-align:center;
+
+    padding:30px 5px;
+}
+
+.end p{
+    color:#aaa4b0;
+
+    font-size:15px;
+
+    line-height:1.9;
+}
+
+.signature{
+    color:white;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    margin-top:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:380px){
+
+    .page{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .hero{
+        min-height:430px;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .card{
+        padding:16px;
+    }
+
+    h2{
+        font-size:23px;
+    }
+
+    .message{
+        font-size:14.5px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <small>A little surprise for</small>
+
+    <h1 id="name1">
+        Your Overthinker
+    </h1>
+
+    <p>
+        For the person who thinks about everything
+        and still somehow makes everything better. 🤍
+    </p>
+
+</section>
+
+
+<!-- PHOTO -->
+
+<section class="card">
+
+    <div class="photo">
+
+        <img
+            src="Screenshot_2026.png"
+            alt="Birthday Photo"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section class="card">
+
+    <div class="label">
+        The Countdown
+    </div>
+
+    <h2>
+        Your day is getting closer 🎂
+    </h2>
+
+    <div class="countdown">
+
+        <div class="time">
+            <div
+                class="number"
+                id="days"
+            >00</div>
+
+            <div class="unit">
+                Days
+            </div>
+        </div>
+
+
+        <div class="time">
+            <div
+                class="number"
+                id="hours"
+            >00</div>
+
+            <div class="unit">
+                Hours
+            </div>
+        </div>
+
+
+        <div class="time">
+            <div
+                class="number"
+                id="minutes"
+            >00</div>
+
+            <div class="unit">
+                Minutes
+            </div>
+        </div>
+
+
+        <div class="time">
+            <div
+                class="number"
+                id="seconds"
+            >00</div>
+
+            <div class="unit">
+                Seconds
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="date">
+
+        <input
+            type="datetime-local"
+            id="birthday"
+        >
+
+        <button onclick="setDate()">
+            Set
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- MESSAGE -->
+
+<section class="card">
+
+    <div class="label">
+        For The Overthinker
+    </div>
+
+    <h2>
+        Listen, you. 🖤
+    </h2>
+
+
+    <div class="message">
+
+        <p>
+            Haan, tum wahi ho jo ek simple message ka bhi
+            <strong>27 different meanings</strong>
+            nikaal sakte ho. Jo kal ki tension aaj leta hai,
+            aur kabhi-kabhi aaj ki khushi bhi kal ke baare mein
+            soch kar miss kar deta hai.
+        </p>
+
+
+        <p>
+            But honestly, that mind of yours is also one of
+            your biggest strengths. You notice things other
+            people don't. You care deeply. You dream seriously.
+            You question everything because you want to understand
+            it, not because you're weak.
+        </p>
+
+
+        <p>
+            I hope this year you learn to give yourself the
+            same patience you give everyone else. Not every
+            thought needs an answer. Not every situation needs
+            a perfect plan.
+        </p>
+
+
+        <p>
+            Sometimes you can simply breathe, trust yourself,
+            and take the next step.
+        </p>
+
+
+        <p>
+            Whenever your mind gets too loud, remember this:
+            <strong>
+                you are already becoming the person
+                you keep imagining.
+            </strong>
+        </p>
+
+
+        <p>
+            Keep your ambition high.
+            Keep working for your goals.
+            Don't let temporary confusion make you doubt
+            a permanent dream.
+        </p>
+
+
+        <p>
+            You don't need to have everything figured out.
+            You just need to keep moving.
+            One small step at a time.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SCRATCH -->
+
+<section class="card">
+
+    <div class="label">
+        One More Thing
+    </div>
+
+    <h2>
+        Scratch this 👆
+    </h2>
+
+    <p style="color:#999;line-height:1.6;">
+        Finger se scratch karke hidden message reveal karo.
+    </p>
+
+
+    <canvas
+        id="scratch"
+        width="900"
+        height="400"
+    ></canvas>
+
+
+    <div class="scratch-hidden">
+        ✨ You deserve every good thing
+        you're working so hard for.
+        Keep going. ✨
+    </div>
+
+</section>
+
+
+<!-- GIFT -->
+
+<section class="card gift-area">
+
+    <div class="label">
+        Last Surprise
+    </div>
+
+    <h2>
+        Your Gift 🎁
+    </h2>
+
+    <p style="color:#999;">
+        Gift par tap karo.
+    </p>
+
+
+    <div
+        class="gift"
+        id="gift"
+        onclick="openGift()"
+    >
+
+        <div class="gift-lid"></div>
+
+        <div class="gift-ribbon"></div>
+
+        <div class="gift-box"></div>
+
+    </div>
+
+
+    <div
+        class="gift-message"
+        id="giftMessage"
+    >
+
+        <p>
+            <strong>
+                This gift is a reminder:
+            </strong>
+        </p>
+
+        <p>
+            Chase your ambition.
+            Protect your peace.
+            Work for the goals that matter to you.
+        </p>
+
+        <p>
+            And one day you'll look back and realize
+            that every small step counted. 🌙✨
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- END -->
+
+<section class="end">
+
+    <div class="label">
+        From someone who believes in you
+    </div>
+
+
+    <p>
+        Happy Birthday. May this year bring you
+        closer to every goal you've quietly been
+        working towards.
+    </p>
+
+
+    <p>
+        May your ambition stay fearless,
+        your heart stay soft,
+        and your overthinking finally learn
+        that not everything has to be figured out today.
+    </p>
+
+
+    <p>
+        <strong>
+            Dream bigger. Work harder. Worry less.
+            Keep going.
+            The future you're working for is waiting for you.
+        </strong>
+    </p>
+
+
+    <div class="signature">
+
+        Happy Birthday,
+        <span id="name2">
+            Your Overthinker
+        </span>
+        🤍
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+
+/* ==========================================
+   ⭐⭐⭐ SIRF YE 2 CHEEZEIN CHANGE KARO
+========================================== */
+
+const NAME =
+    "Abhinav bharti";
+
+
+const BIRTHDAY =
+    "2026-11-03T00:00";
+
+
+/* ==========================================
+   NAME
+========================================== */
+
+document.getElementById(
+    "name1"
+).textContent = NAME;
+
+
+document.getElementById(
+    "name2"
+).textContent = NAME;
+
+
+/* ==========================================
+   DATE
+========================================== */
+
+const birthdayInput =
+    document.getElementById(
+        "birthday"
+    );
+
+
+birthdayInput.value =
+    BIRTHDAY;
+
+
+/* ==========================================
+   COUNTDOWN
+========================================== */
+
+function updateCountdown(){
+
+    const target =
+        new Date(
+            birthdayInput.value
+        ).getTime();
+
+
+    const now =
+        Date.now();
+
+
+    let difference =
+        target - now;
+
+
+    if(difference < 0){
+
+        difference = 0;
+
+    }
+
+
+    const days =
+        Math.floor(
+            difference /
+            86400000
+        );
+
+
+    const hours =
+        Math.floor(
+            (difference %
+            86400000) /
+            3600000
+        );
+
+
+    const minutes =
+        Math.floor(
+            (difference %
+            3600000) /
+            60000
+        );
+
+
+    const seconds =
+        Math.floor(
+            (difference %
+            60000) /
+            1000
+        );
+
+
+    document.getElementById(
+        "days"
+    ).textContent =
+        String(days).padStart(2,"0");
+
+
+    document.getElementById(
+        "hours"
+    ).textContent =
+        String(hours).padStart(2,"0");
+
+
+    document.getElementById(
+        "minutes"
+    ).textContent =
+        String(minutes).padStart(2,"0");
+
+
+    document.getElementById(
+        "seconds"
+    ).textContent =
+        String(seconds).padStart(2,"0");
+
+}
+
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+updateCountdown();
+
+
+/* ==========================================
+   DATE BUTTON
+========================================== */
+
+function setDate(){
+
+    updateCountdown();
+
+}
+
+
+/* ==========================================
+   SCRATCH CARD
+========================================== */
+
+const canvas =
+    document.getElementById(
+        "scratch"
+    );
+
+
+const ctx =
+    canvas.getContext(
+        "2d"
+    );
+
+
+ctx.fillStyle =
+    "#302b37";
+
+
+ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+);
+
+
+ctx.fillStyle =
+    "#aaa";
+
+
+ctx.font =
+    "bold 48px Arial";
+
+
+ctx.textAlign =
+    "center";
+
+
+ctx.textBaseline =
+    "middle";
+
+
+ctx.fillText(
+    "SCRATCH ME ✨",
+    canvas.width / 2,
+    canvas.height / 2
+);
+
+
+let scratching = false;
+
+
+function scratch(e){
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+
+    const x =
+        (e.clientX - rect.left) *
+        canvas.width /
+        rect.width;
+
+
+    const y =
+        (e.clientY - rect.top) *
+        canvas.height /
+        rect.height;
+
+
+    ctx.globalCompositeOperation =
+        "destination-out";
+
+
+    ctx.beginPath();
+
+
+    ctx.arc(
+        x,
+        y,
+        55,
+        0,
+        Math.PI * 2
+    );
+
+
+    ctx.fill();
+
+}
+
+
+canvas.addEventListener(
+    "pointerdown",
+    function(e){
+
+        scratching = true;
+
+        scratch(e);
+
+    }
+);
+
+
+canvas.addEventListener(
+    "pointermove",
+    function(e){
+
+        if(scratching){
+
+            scratch(e);
+
+        }
+
+    }
+);
+
+
+window.addEventListener(
+    "pointerup",
+    function(){
+
+        scratching = false;
+
+    }
+);
+
+
+/* ==========================================
+   GIFT
+========================================== */
+
+function openGift(){
+
+    document
+        .getElementById("gift")
+        .classList.add("open");
+
+
+    document
+        .getElementById("giftMessage")
+        .classList.add("show");
+
+}
+
+
+</script>
+
+</body>
+                 </html>
